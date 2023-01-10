@@ -5,18 +5,65 @@
 html, body {
   margin: 0;
   padding: 0;
+  height: 100%;
+}
+
+body {
+  background-color: lightblue;
 }
 
 .main-header {
   background-color: grey;
-  height: 75px;
+  height: 10%;
+  min-height: 75px;
   padding: 0 25px;
   justify-content: space-between;
   align-items: center;
 }
 
-.welcome-message {
+h1 {
   margin: 0;
+}
+
+main {
+  height: 90%;
+  padding: 25px 35px;
+}
+
+.trips-container {
+  width: 100%;
+  flex-direction: row;
+  gap: 10px;
+  text-align: center;
+}
+
+.trip-list {
+  min-width: 33%;
+  background-color: green;
+}
+
+.card-containers {
+  width: 100%;
+  margin: auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px 10px;
+  gap: 10px 8px;
+  background-color: lightpink;
+}
+
+
+.trip-list h2 {
+  flex-basis: 100%;
+  margin: 10px 0;
+}
+
+.trip-card {
+  height: 200px;
+  min-width: 150px;
+  background-color: white;
+  border: 1px solid black;
+  flex-grow: 1;
 }
 
 .flex {
