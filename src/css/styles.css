@@ -1,3 +1,24 @@
-body {
-  background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.main-header {
+  background-color: grey;
+  height: 75px;
+  padding: 0 25px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.welcome-message {
+  margin: 0;
+}
+
+.flex {
+  display: flex;
 }
