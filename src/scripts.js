@@ -1,11 +1,64 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// An example of how you tell webpack to use a CSS (SCSS) file
+//Imports
 import './css/styles.css';
+import apiCalls from './apiCalls';
+import Traveler from './Traveler';
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
+// import './images/turing-logo.png'
+
+//Query Selectors
+const pastTripBox = document.getElementById('pastTrips');
+const upcomingTripBox = document.getElementById('upcomingTrips');
+const pendingTripBox = document.getElementById('pendingTrips');
+const welcomeText = document.getElementById('welcome');
 
 
-console.log('This is the JavaScript entry file - your code begins here.');
+//Global Variables
+let currentUser;
+let allTravelers;
+let allTrips;
+let allDestinations;
+
+//Functions
+function fetchStart() {
+  apiCalls().then(data => {
+    allTravelers = data[0].travelers.map(user => new Traveler(user));
+    allTrips = data[1].trips;
+    allDestinations = data[2].destinations;
+    currentUser = allTravelers[generateRandomIndex()];
+    loadHandler();
+  })
+}
+
+function loadHandler() {
+  displayWelcomeMessage();
+}
+
+function generateRandomIndex() {
+  return Math.floor(Math.random() * allTravelers.length);
+}
+
+function displayWelcomeMessage() {
+  welcomeText.innerText = `Welcome ${currentUser.getFirstName()}`;
+}
+
+function displayAllTrips() {
+  displayPastTrips();
+  displayUpcomingTrips();
+  displayPendingTrips();
+}
+
+function displayPastTrips() {
+
+}
+
+function displayUpcomingTrips() {
+
+}
+
+function displayPendingTrips() {
+
+}
+
+//Event Listeners
+
+window.addEventListener('load', fetchStart)
