@@ -12,13 +12,10 @@ class Trip {
     
     this.upcomingTrips = this.currentUserTrips
       .filter(trip => (new Date(trip.date) >= this.currentDate && trip.status !== "pending"));
-  }
 
-  // getTotalCost() {
-  //   return this.currentTrips.reduce((acc, curr) => {
-  //     const curCost = new Destination
-  //   }, 0)
-  // }
+    this.tripsThisYear = this.currentUserTrips
+      .filter(trip => (new Date(trip.date).getFullYear() === this.currentDate.getFullYear()));
+  }
 
 }
 

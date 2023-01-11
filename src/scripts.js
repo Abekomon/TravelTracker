@@ -12,7 +12,7 @@ const pastTripBox = document.getElementById('pastTrips');
 const upcomingTripBox = document.getElementById('upcomingTrips');
 const pendingTripBox = document.getElementById('pendingTrips');
 const welcomeText = document.getElementById('welcome');
-
+const costText = document.getElementById('yearCost')
 
 //Global Variables
 const currentDate = new Date("2020/07/17");
@@ -50,6 +50,7 @@ function displayAllTrips() {
   displayTripType(userTrips, "past", pastTripBox);
   displayTripType(userTrips, "upcoming", upcomingTripBox);
   displayTripType(userTrips, "pending", pendingTripBox);
+  displayYTDCost(userTrips);
 }
 
 function displayTripType(data, type, location) {
@@ -59,9 +60,19 @@ function displayTripType(data, type, location) {
     `<div class="trip-card">
       <header>${dest.name}</header>
       <p>Date: ${trip.date}</p>
+      <p>Travelers: ${trip.travelers}</p>
       <p>Duration: ${trip.duration} days</p>
+      <p>Total Cost: $${Number(dest.getAllCost()).toLocaleString()}</p>
     </div>`
   });
+}
+
+function displayYTDCost(data) {
+  const cost = data.tripsThisYear.reduce((acc, curr) => {
+    const dest = new Destination(curr, allDestinations);
+    return acc = acc + dest.getAllCost()
+  }, 0)
+  costText.innerText = `Your total cost this year is: $${(Number(cost).toLocaleString())}`
 }
 
 //Event Listeners
