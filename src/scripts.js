@@ -2,6 +2,8 @@
 import './css/styles.css';
 import apiCalls from './apiCalls';
 import Traveler from './Traveler';
+import Trip from './Trip';
+import Destination from './Destination';
 
 // import './images/turing-logo.png'
 
@@ -31,6 +33,7 @@ function fetchStart() {
 
 function loadHandler() {
   displayWelcomeMessage();
+  displayAllTrips();
 }
 
 function generateRandomIndex() {
@@ -42,21 +45,31 @@ function displayWelcomeMessage() {
 }
 
 function displayAllTrips() {
-  displayPastTrips();
-  displayUpcomingTrips();
-  displayPendingTrips();
+  const userTrips = new Trip(currentUser, allTrips);
+  // displayPastTrips(userTrips);
+  // displayUpcomingTrips(userTrips);
+  displayPendingTrips(userTrips);
 }
 
-function displayPastTrips() {
+function displayPastTrips(data) {
+  const pastTrips = data.getTripsByStatus('approved');
+  
+}
+
+function displayUpcomingTrips(data) {
 
 }
 
-function displayUpcomingTrips() {
-
-}
-
-function displayPendingTrips() {
-
+function displayPendingTrips(data) {
+  const pendTrips = data.getTripsByStatus('pending')
+  pendTrips.forEach(trip => {
+    pendingTripBox.innerHTML += 
+    `<div class="trip-card">
+      <header>${trip.destinationID}</header>
+      <p>Date: ${trip.date}</p>
+      <p>Duration: ${trip.duration} days</p>
+    </div>`
+  })
 }
 
 //Event Listeners
