@@ -67,6 +67,23 @@ main {
   flex-grow: 1;
 }
 
+.form-container {
+  width: 100%;
+  text-align: center;
+  background-color:lightpink;
+}
+
+.request-form {
+  margin: 20px auto;
+  width: 50%;
+  flex-direction: column;
+  background: lightgray;
+}
+
 .flex {
   display: flex;
+}
+
+.hidden {
+  display: none;
 }
