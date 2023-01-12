@@ -12,7 +12,9 @@ const pastTripBox = document.getElementById('pastTrips');
 const upcomingTripBox = document.getElementById('upcomingTrips');
 const pendingTripBox = document.getElementById('pendingTrips');
 const welcomeText = document.getElementById('welcome');
-const costText = document.getElementById('yearCost')
+const costText = document.getElementById('yearCost');
+const formDest = document.getElementById('requestDestination');
+
 
 //Global Variables
 const currentDate = new Date("2020/07/17");
@@ -35,10 +37,17 @@ function fetchStart() {
 function loadHandler() {
   displayWelcomeMessage();
   displayAllTrips();
+  generateFormOptions();
 }
 
 function generateRandomIndex() {
   return Math.floor(Math.random() * allTravelers.length);
+}
+
+function generateFormOptions() {
+  allDestinations.forEach(dest => {
+    formDest.innerHTML += `<option value="${dest.id}">${dest.destination}</option>`
+  })
 }
 
 function displayWelcomeMessage() {
