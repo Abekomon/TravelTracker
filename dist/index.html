@@ -12,7 +12,15 @@
     <div id="yearCost"></div>
   </header>
   <main class="flex">
-    <section class="trips-container flex hidden">
+    <nav class="top-nav flex" id="nav">
+      <div class="tab flex focused" id="dashNav">
+        <h2 tabindex="0">Dashboard</h2>
+      </div>
+      <div class="tab flex" id="reqNav">
+        <h2 tabindex="0">Trip Request Form</h2>
+      </div>
+    </nav>
+    <section class="trips-container flex" id="dashboard">
       <section class="trip-list">
         <h2>Past Trips</h2>
         <div class="card-containers flex" id="pastTrips"></div>
@@ -26,16 +34,16 @@
         <div class="card-containers flex" id="pendingTrips"></div>
       </section>
     </section>
-    <section class="form-container">
-      <form class="request-form flex">
+    <section class="form-container hidden" id="form">
+      <form class="request-form flex" id="requestForm">
         <label for="requestDate">Date</label>
-        <input type="date" id="requestDate"/>
-        <label id="requestDuration">Duration</label>
-        <input type="number" id="requestDuration"/>
-        <label for="requestTravelers">Number of Travers</label>
-        <input type="number" id="requestTravelers"/>
+        <input type="date" id="requestDate" name="requestDate" maxlength="10" required/>
+        <label for="requestDuration">Duration</label>
+        <input type="number" min="1" id="requestDuration" name="requestDuration" required/>
+        <label for="requestTravelers">Number of Travelers</label>
+        <input type="number" min="1" id="requestTravelers" required/>
         <label for="reqestDestination">Destination</label>
-        <select type="select" id="requestDestination">
+        <select type="select" id="requestDestination" required>
           <option value="" disabled selected>Choose your Destination</option>
         </select>
         <input type="submit" value="Submit Request"/>
