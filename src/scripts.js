@@ -22,6 +22,9 @@ const formDate = document.getElementById('requestDate');
 const formTrav = document.getElementById('requestTravelers');
 const dashNavTab = document.getElementById('dashNav');
 const reqNavTab = document.getElementById('reqNav');
+const loginForm = document.getElementById('loginForm');
+const loginUsername = document.getElementById('loginUsername')
+const loginPassword = document.getElementById('loginPassword')
 
 
 //Global Variables
@@ -37,26 +40,32 @@ function fetchStart() {
     allTravelers = data[0].travelers.map(user => new Traveler(user, currentDate));
     allTrips = data[1].trips;
     allDestinations = data[2].destinations;
-    currentUser = allTravelers[generateRandomIndex()];
+    // currentUser = allTravelers[generateRandomIndex()];
     loadHandler();
   })
 }
 
 function loadHandler() {
-  displayWelcomeMessage();
   displayAllTrips();
   generateForm();
 }
 
-function generateRandomIndex() {
-  return Math.floor(Math.random() * allTravelers.length);
-}
+// function generateRandomIndex() {
+//   return Math.floor(Math.random() * allTravelers.length);
+// }
 
 function generateForm() {
   allDestinations.forEach(dest => {
     formDest.innerHTML += `<option value="${dest.id}">${dest.destination}</option>`
   })
   formDate.setAttribute("min", currentDate.toISOString().split('T')[0])
+}
+
+function changeLoginViews() {
+  loginForm.classList.add('hidden');
+  dashboard.classList.remove('hidden');
+  costText.classList.remove('hidden');
+  displayWelcomeMessage();
 }
 
 function displayWelcomeMessage() {
@@ -134,26 +143,43 @@ function updateValues(){
   })
 }
 
-function changeView(){
+function changeTabView(){
   dashboard.classList.toggle("hidden");
   dashNavTab.classList.toggle("focused")
   form.classList.toggle("hidden");
   reqNavTab.classList.toggle("focused");
 }
 
+function loginCheck() {
+  const user = Number(loginUsername.value.slice(-2));
+  fetch(`http://localhost:3001/api/v1/travelers/${user}`)
+  .then(response => response.json())
+  .then(data => {
+    const user = new Traveler(data, currentDate);
+    if(user.password === loginPassword.value){
+      currentUser = user;
+      fetchStart();
+      changeLoginViews();
+    } else {
+      console.log('Failed Login Attempt')
+    }
+  })
+
+}
+
 //Event Listeners
 
-window.addEventListener('load', fetchStart);
+// window.addEventListener('load', fetchStart);
 
 dashNavTab.addEventListener('click', () => {
   if(dashboard.classList.contains('hidden')){
-    changeView();
+    changeTabView();
   }
 })
 
 reqNavTab.addEventListener('click', () => {
   if(form.classList.contains('hidden')) {
-    changeView();
+    changeTabView();
   }
 })
 
@@ -161,3 +187,8 @@ reqForm.addEventListener('submit', (e) => {
   e.preventDefault();
   postFormData();
 });
+
+loginForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  loginCheck();
+})
