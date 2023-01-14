@@ -14,7 +14,8 @@ const pendingTripBox = document.getElementById('pendingTrips');
 const welcomeText = document.getElementById('welcome');
 const costText = document.getElementById('yearCost');
 const dashboard = document.getElementById('dashboard');
-const form = document.getElementById('form')
+const form = document.getElementById('form');
+const nav = document.getElementById('nav');
 const reqForm = document.getElementById('requestForm');
 const formDest = document.getElementById('requestDestination');
 const formDura = document.getElementById('requestDuration');
@@ -22,9 +23,10 @@ const formDate = document.getElementById('requestDate');
 const formTrav = document.getElementById('requestTravelers');
 const dashNavTab = document.getElementById('dashNav');
 const reqNavTab = document.getElementById('reqNav');
+const login = document.getElementById('loginSection');
 const loginForm = document.getElementById('loginForm');
-const loginUsername = document.getElementById('loginUsername')
-const loginPassword = document.getElementById('loginPassword')
+const loginUsername = document.getElementById('loginUsername');
+const loginPassword = document.getElementById('loginPassword');
 
 
 //Global Variables
@@ -62,7 +64,8 @@ function generateForm() {
 }
 
 function changeLoginViews() {
-  loginForm.classList.add('hidden');
+  login.classList.add('hidden');
+  nav.classList.remove('hidden');
   dashboard.classList.remove('hidden');
   costText.classList.remove('hidden');
   displayWelcomeMessage();
