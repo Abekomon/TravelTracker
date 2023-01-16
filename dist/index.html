@@ -8,11 +8,21 @@
 </head>
 <body>
   <header class="main-header flex">
-    <h1 class="welcome-message" id="welcome"></h1>
-    <div id="yearCost"></div>
+    <h1 class="welcome-message" id="welcome">Welcome to Travel Tracker</h1>
+    <div id="yearCost" class="hidden"></div>
   </header>
   <main class="flex">
-    <nav class="top-nav flex" id="nav">
+    <section class="login-section" id="loginSection">
+      <form class="login-form flex" id="loginForm">
+        <legend>Please Log In</legend>
+        <label for="loginUsername">Username</label>
+        <input id="loginUsername" name="loginUsername" type="text" placeholder="Username" required/>
+        <label for="loginPassword">Password</label>
+        <input id="loginPassword" name="loginPassword" type="text" placeholder="Password" required/>
+        <input type="submit" value="Log-in" id="login"/>
+      </form>
+    </section>
+    <nav class="top-nav hidden flex" id="nav">
       <div class="tab flex focused" id="dashNav">
         <h2 tabindex="0">Dashboard</h2>
       </div>
@@ -20,7 +30,7 @@
         <h2 tabindex="0">Trip Request Form</h2>
       </div>
     </nav>
-    <section class="trips-container flex" id="dashboard">
+    <section class="trips-container hidden flex" id="dashboard">
       <section class="trip-list">
         <h2>Past Trips</h2>
         <div class="card-containers flex" id="pastTrips"></div>
