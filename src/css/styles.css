@@ -100,6 +100,11 @@ main {
   background: lightgray;
 }
 
+.request-form input:focus {
+  outline: 2px solid royalblue;
+  box-shadow: 1px 1px 8px 1px royalblue;
+}
+
 .focused {
   background-color: lightpink;
   cursor: default;

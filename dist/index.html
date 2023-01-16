@@ -13,11 +13,11 @@
   </header>
   <main class="flex">
     <nav class="top-nav flex" id="nav">
-      <div class="tab flex focused" id="dashNav">
-        <h2 tabindex="0">Dashboard</h2>
+      <div tabindex="0" class="tab flex focused" id="dashNav" aria-labelledby="tabLabel1">
+        <h2 id="tabLabel1">Dashboard</h2>
       </div>
-      <div class="tab flex" id="reqNav">
-        <h2 tabindex="0">Trip Request Form</h2>
+      <div tabindex="0" class="tab flex" id="reqNav" aria-labelledby="tabLabel2">
+        <h2 id="tabLabel2">Trip Request Form</h2>
       </div>
     </nav>
     <section class="trips-container flex" id="dashboard">
@@ -35,7 +35,8 @@
       </section>
     </section>
     <section class="form-container hidden" id="form">
-      <form class="request-form flex" id="requestForm">
+      <h3 id="formLabel">Make a trip request:</h3>
+      <form class="request-form flex" id="requestForm" aria-labelledby="formLabel">
         <label for="requestDate">Date</label>
         <input type="date" id="requestDate" name="requestDate" maxlength="10" required/>
         <label for="requestDuration">Duration</label>
