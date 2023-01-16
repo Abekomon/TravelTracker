@@ -15,7 +15,6 @@ class Destination {
     let totalCost = stayCost + flightCost
     return totalCost += (totalCost * 0.1)
   }
-
 }
 
 export default Destination;

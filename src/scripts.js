@@ -5,8 +5,6 @@ import Traveler from './Traveler';
 import Trip from './Trip';
 import Destination from './Destination';
 
-// import './images/turing-logo.png'
-
 //Query Selectors
 const pastTripBox = document.getElementById('pastTrips');
 const upcomingTripBox = document.getElementById('upcomingTrips');
@@ -27,22 +25,20 @@ const login = document.getElementById('loginSection');
 const loginForm = document.getElementById('loginForm');
 const loginUsername = document.getElementById('loginUsername');
 const loginPassword = document.getElementById('loginPassword');
-
+const loginMessage = document.getElementById('loginMessage');
+const formMessage = document.getElementById('formMessage')
 
 //Global Variables
 const currentDate = new Date("2020/07/17");
 let currentUser;
-let allTravelers;
 let allTrips;
 let allDestinations;
 
 //Functions
 function fetchStart() {
   apiCalls().then(data => {
-    allTravelers = data[0].travelers.map(user => new Traveler(user, currentDate));
-    allTrips = data[1].trips;
-    allDestinations = data[2].destinations;
-    // currentUser = allTravelers[generateRandomIndex()];
+    allTrips = data[0].trips;
+    allDestinations = data[1].destinations;
     loadHandler();
   })
 }
@@ -51,10 +47,6 @@ function loadHandler() {
   displayAllTrips();
   generateForm();
 }
-
-// function generateRandomIndex() {
-//   return Math.floor(Math.random() * allTravelers.length);
-// }
 
 function generateForm() {
   allDestinations.forEach(dest => {
@@ -133,8 +125,16 @@ function postFormData() {
     } else {
       throw new Error('Something went wrong!')
     }
-  }).then(updateValues())
-    .catch(error => console.log(error))
+  }).then(() => {
+    resetFormData();
+    updateValues();
+    formMessage.classList.remove('hidden')
+    formMessage.innerText = "Trip request successful, please check your dashboard!"
+  }).catch(() => {
+    resetFormData();
+    formMessage.classList.remove('hidden')
+    formMessage.innerText = "Something went wrong with the sever, please try again later!"
+  })
 }
 
 function updateValues(){
@@ -146,11 +146,29 @@ function updateValues(){
   })
 }
 
+function resetFormData() {
+  formDest.value = '';
+  formTrav.value = '';
+  formDate.value = '';
+  formDura.value = '';
+}
+
 function changeTabView(){
   dashboard.classList.toggle("hidden");
-  dashNavTab.classList.toggle("focused")
+  dashNavTab.classList.toggle("focused");
   form.classList.toggle("hidden");
   reqNavTab.classList.toggle("focused");
+  updateAria(reqNavTab.classList.contains("focused"));
+}
+
+function updateAria(bool){
+  if (bool){
+    dashNavTab.setAttribute('aria-selected', false);
+    reqNavTab.setAttribute('aria-selected', true);
+  } else {
+    reqNavTab.setAttribute('aria-selected', false);
+    dashNavTab.setAttribute('aria-selected', true);
+  }
 }
 
 function loginCheck() {
@@ -164,15 +182,24 @@ function loginCheck() {
       fetchStart();
       changeLoginViews();
     } else {
-      console.log('Failed Login Attempt')
+      loginMessage.classList.remove('hidden')
+      loginPassword.value = '';
+      loginUsername.value = '';
+      loginMessage.innerText = 'Incorrect Username or Password, please try again!';
     }
   })
-
+  .catch(() => {
+    loginMessage.classList.remove('hidden')
+    loginMessage.innerText = 'Something went wrong with the server, please try again later!';
+  })
 }
 
 //Event Listeners
 
-// window.addEventListener('load', fetchStart);
+loginForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  loginCheck();
+})
 
 dashNavTab.addEventListener('click', () => {
   if(dashboard.classList.contains('hidden')){
@@ -190,8 +217,3 @@ reqForm.addEventListener('submit', (e) => {
   e.preventDefault();
   postFormData();
 });
-
-loginForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  loginCheck();
-})

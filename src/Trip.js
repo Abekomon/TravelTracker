@@ -16,7 +16,6 @@ class Trip {
     this.tripsThisYear = this.currentUserTrips
       .filter(trip => (new Date(trip.date).getFullYear() === this.currentDate.getFullYear()));
   }
-
 }
 
 export default Trip;

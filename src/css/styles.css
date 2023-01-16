@@ -50,11 +50,6 @@ main {
   flex-direction: column;
 }
 
-legend {
-  font-size: 25px;
-  align-self: center;
-}
-
 .login-form input {
   width: 100%;
   height: 30px;
@@ -69,6 +64,12 @@ legend {
 
 #login {
   width: 50%;
+}
+
+.login-message {
+  font-size: 20px;
+  align-self: center;
+  margin: 15px 0 0;
 }
 
 .tab {
@@ -133,6 +134,31 @@ legend {
   width: 50%;
   flex-direction: column;
   background: lightgray;
+}
+
+.request-form input, .request-form select {
+  margin-bottom: 10px;
+  height: 30px;
+  border-radius: 5px;
+}
+
+.request-form label {
+  align-self: flex-start;
+  margin-bottom: 5px;
+  font-size: 17px;
+}
+
+input:focus, select:focus {
+  outline: 2px solid royalblue;
+  box-shadow: 1px 1px 8px 1px royalblue;
+}
+
+#requestButton {
+  margin-top: 15px;
+  align-self: flex-start;
+  width: 50%;
+  height: 35px;
+  font-size: 20px;
 }
 
 .focused {

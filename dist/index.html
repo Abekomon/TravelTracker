@@ -13,20 +13,21 @@
   </header>
   <main class="flex">
     <section class="login-section" id="loginSection">
-      <form class="login-form flex" id="loginForm">
-        <legend>Please Log In</legend>
+      <h2 id="loginLabel">Please Log In</h2>
+      <form class="login-form flex" id="loginForm" aria-labelledby="loginLabel">
         <label for="loginUsername">Username</label>
         <input id="loginUsername" name="loginUsername" type="text" placeholder="Username" required/>
         <label for="loginPassword">Password</label>
-        <input id="loginPassword" name="loginPassword" type="text" placeholder="Password" required/>
+        <input id="loginPassword" name="loginPassword" type="text" placeholder="Password (Case Sensitive)" required/>
         <input type="submit" value="Log-in" id="login"/>
       </form>
+      <p class="login-message hidden" id="loginMessage"></p>
     </section>
     <nav class="top-nav hidden flex" id="nav">
-      <div class="tab flex focused" id="dashNav">
+      <div class="tab flex focused" id="dashNav" aria-selected="true">
         <h2 tabindex="0">Dashboard</h2>
       </div>
-      <div class="tab flex" id="reqNav">
+      <div class="tab flex" id="reqNav" aria-selected="false">
         <h2 tabindex="0">Trip Request Form</h2>
       </div>
     </nav>
@@ -45,19 +46,21 @@
       </section>
     </section>
     <section class="form-container hidden" id="form">
-      <form class="request-form flex" id="requestForm">
+      <h3 id="requestLabel">Make a Trip Request:</h3>
+      <form class="request-form flex" id="requestForm" aria-labelledby="requestLabel">
         <label for="requestDate">Date</label>
         <input type="date" id="requestDate" name="requestDate" maxlength="10" required/>
         <label for="requestDuration">Duration</label>
-        <input type="number" min="1" id="requestDuration" name="requestDuration" required/>
+        <input type="number" min="1" id="requestDuration" name="requestDuration" placeholder="Number of Days" required/>
         <label for="requestTravelers">Number of Travelers</label>
-        <input type="number" min="1" id="requestTravelers" required/>
+        <input type="number" min="1" id="requestTravelers" placeholder="Number of Travelers" required/>
         <label for="reqestDestination">Destination</label>
         <select type="select" id="requestDestination" required>
           <option value="" disabled selected>Choose your Destination</option>
         </select>
-        <input type="submit" value="Submit Request"/>
+        <input type="submit" value="Submit Request" id="requestButton"/>
       </form>
+      <p class="form-message hidden" id="formMessage"></p>
     </section>
   </main>
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
