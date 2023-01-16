@@ -128,10 +128,12 @@ function postFormData() {
       throw new Error('Something went wrong!')
     }
   }).then(() => {
-    updateValues()
+    resetFormData();
+    updateValues();
     formMessage.classList.remove('hidden')
     formMessage.innerText = "Trip request successful, please check your dashboard!"
   }).catch(() => {
+    resetFormData();
     formMessage.classList.remove('hidden')
     formMessage.innerText = "Something went wrong with the sever, please try again later!"
   })
@@ -144,6 +146,13 @@ function updateValues(){
     allTrips = data.trips;
     displayAllTrips();
   })
+}
+
+function resetFormData() {
+  formDest.value = '';
+  formTrav.value = '';
+  formDate.value = '';
+  formDura.value = '';
 }
 
 function changeTabView(){
@@ -176,6 +185,8 @@ function loginCheck() {
       changeLoginViews();
     } else {
       loginMessage.classList.remove('hidden')
+      loginPassword.value = '';
+      loginUsername.value = '';
       loginMessage.innerText = 'Incorrect Username or Password, please try again!';
     }
   })
@@ -187,8 +198,6 @@ function loginCheck() {
 }
 
 //Event Listeners
-
-// window.addEventListener('load', fetchStart);
 
 dashNavTab.addEventListener('click', () => {
   if(dashboard.classList.contains('hidden')){
