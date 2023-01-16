@@ -148,9 +148,20 @@ function updateValues(){
 
 function changeTabView(){
   dashboard.classList.toggle("hidden");
-  dashNavTab.classList.toggle("focused")
+  dashNavTab.classList.toggle("focused");
   form.classList.toggle("hidden");
   reqNavTab.classList.toggle("focused");
+  updateAria(reqNavTab.classList.contains("focused"));
+}
+
+function updateAria(bool){
+  if (bool){
+    dashNavTab.setAttribute('aria-selected', false);
+    reqNavTab.setAttribute('aria-selected', true);
+  } else {
+    reqNavTab.setAttribute('aria-selected', false);
+    dashNavTab.setAttribute('aria-selected', true);
+  }
 }
 
 function loginCheck() {
