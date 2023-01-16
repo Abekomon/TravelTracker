@@ -31,16 +31,14 @@ const formMessage = document.getElementById('formMessage')
 //Global Variables
 const currentDate = new Date("2020/07/17");
 let currentUser;
-let allTravelers;
 let allTrips;
 let allDestinations;
 
 //Functions
 function fetchStart() {
   apiCalls().then(data => {
-    allTravelers = data[0].travelers.map(user => new Traveler(user, currentDate));
-    allTrips = data[1].trips;
-    allDestinations = data[2].destinations;
+    allTrips = data[0].trips;
+    allDestinations = data[1].destinations;
     loadHandler();
   })
 }
@@ -194,10 +192,14 @@ function loginCheck() {
     loginMessage.classList.remove('hidden')
     loginMessage.innerText = 'Something went wrong with the server, please try again later!';
   })
-
 }
 
 //Event Listeners
+
+loginForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  loginCheck();
+})
 
 dashNavTab.addEventListener('click', () => {
   if(dashboard.classList.contains('hidden')){
@@ -215,8 +217,3 @@ reqForm.addEventListener('submit', (e) => {
   e.preventDefault();
   postFormData();
 });
-
-loginForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  loginCheck();
-})

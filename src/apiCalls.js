@@ -3,9 +3,8 @@ function fetchData(dataset) {
 }
 
 export default function apiCalls() {
-  const fetchTravelers = fetchData('travelers')
   const fetchTrips = fetchData('trips')
   const fetchDestinations = fetchData('destinations')
 
-  return Promise.all([fetchTravelers, fetchTrips, fetchDestinations])
+  return Promise.all([fetchTrips, fetchDestinations])
 }
