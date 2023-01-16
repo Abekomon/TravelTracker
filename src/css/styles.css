@@ -66,6 +66,12 @@ main {
   width: 50%;
 }
 
+.login-message {
+  font-size: 20px;
+  align-self: center;
+  margin: 15px 0 0;
+}
+
 .tab {
   width: auto;
   height: 100%;

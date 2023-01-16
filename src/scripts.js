@@ -5,8 +5,6 @@ import Traveler from './Traveler';
 import Trip from './Trip';
 import Destination from './Destination';
 
-// import './images/turing-logo.png'
-
 //Query Selectors
 const pastTripBox = document.getElementById('pastTrips');
 const upcomingTripBox = document.getElementById('upcomingTrips');
@@ -27,7 +25,8 @@ const login = document.getElementById('loginSection');
 const loginForm = document.getElementById('loginForm');
 const loginUsername = document.getElementById('loginUsername');
 const loginPassword = document.getElementById('loginPassword');
-
+const loginMessage = document.getElementById('loginMessage');
+const formMessage = document.getElementById('formMessage')
 
 //Global Variables
 const currentDate = new Date("2020/07/17");
@@ -42,7 +41,6 @@ function fetchStart() {
     allTravelers = data[0].travelers.map(user => new Traveler(user, currentDate));
     allTrips = data[1].trips;
     allDestinations = data[2].destinations;
-    // currentUser = allTravelers[generateRandomIndex()];
     loadHandler();
   })
 }
@@ -51,10 +49,6 @@ function loadHandler() {
   displayAllTrips();
   generateForm();
 }
-
-// function generateRandomIndex() {
-//   return Math.floor(Math.random() * allTravelers.length);
-// }
 
 function generateForm() {
   allDestinations.forEach(dest => {
@@ -133,8 +127,14 @@ function postFormData() {
     } else {
       throw new Error('Something went wrong!')
     }
-  }).then(updateValues())
-    .catch(error => console.log(error))
+  }).then(() => {
+    updateValues()
+    formMessage.classList.remove('hidden')
+    formMessage.innerText = "Trip request successful, please check your dashboard!"
+  }).catch(() => {
+    formMessage.classList.remove('hidden')
+    formMessage.innerText = "Something went wrong with the sever, please try again later!"
+  })
 }
 
 function updateValues(){
@@ -175,8 +175,13 @@ function loginCheck() {
       fetchStart();
       changeLoginViews();
     } else {
-      console.log('Failed Login Attempt')
+      loginMessage.classList.remove('hidden')
+      loginMessage.innerText = 'Incorrect Username or Password, please try again!';
     }
+  })
+  .catch(() => {
+    loginMessage.classList.remove('hidden')
+    loginMessage.innerText = 'Something went wrong with the server, please try again later!';
   })
 
 }
