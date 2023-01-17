@@ -174,7 +174,13 @@ function updateAria(bool){
 function loginCheck() {
   const user = Number(loginUsername.value.slice(-2));
   fetch(`http://localhost:3001/api/v1/travelers/${user}`)
-  .then(response => response.json())
+  .then(response => {
+    if(response.ok){
+      return response.json();
+    } else {
+      throw new Error();
+    }
+  })
   .then(data => {
     const user = new Traveler(data, currentDate);
     if(user.password === loginPassword.value){

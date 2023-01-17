@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-family: 'Hind', sans-serif;
 }
 
 html, body {
@@ -9,12 +10,13 @@ html, body {
 }
 
 body {
-  background-color: lightblue;
+  background-color: #c7ddb5;
 }
 
 .main-header {
-  background-color: grey;
+  background-color: #4b6043;
   height: 10%;
+  color: white;
   min-height: 75px;
   padding: 0 25px;
   justify-content: space-between;
@@ -37,16 +39,16 @@ main {
 }
 
 .login-section {
-  background: lightpink;
+  background: white;
   width: 45%;
   margin: 7% auto 0;
-  padding: 40px;
+  padding: 0 20px 40px;
+  border-radius: 10px;
 }
 
 .login-form {
   width: 90%;
   margin: 0 auto;
-  background: lightcyan;
   flex-direction: column;
 }
 
