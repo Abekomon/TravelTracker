@@ -44,17 +44,17 @@ const destinationData = [
 const tripData = [
   {
   id: 1,
-  userID: 44,
+  userID: 1,
   destinationID: 49,
   travelers: 1,
-  date: "2022/09/16",
+  date: "2020/05/16",
   duration: 8,
   status: "approved",
   suggestedActivities: [ ]
   },
   {
   id: 2,
-  userID: 35,
+  userID: 10,
   destinationID: 25,
   travelers: 5,
   date: "2022/10/04",
@@ -114,7 +114,7 @@ const tripData = [
   },
   {
   id: 8,
-  userID: 36,
+  userID: 1,
   destinationID: 39,
   travelers: 6,
   date: "2022/02/07",
@@ -134,12 +134,12 @@ const tripData = [
   },
   {
   id: 10,
-  userID: 9,
+  userID: 1,
   destinationID: 50,
   travelers: 6,
   date: "2022/07/23",
   duration: 17,
-  status: "approved",
+  status: "pending",
   suggestedActivities: [ ]
   },
 ]

@@ -1,5 +1,7 @@
 class Trip {
   constructor(user, data) {
+    this.allData = data;
+    this.currentUser = user;
     this.currentDate = user.currentDate;
     this.currentUserTrips = data
       .filter(trip => trip.userID === user.id)
