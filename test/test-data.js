@@ -150,5 +150,4 @@ const travelerData = {
   travelerType: "relaxer"
 }
 
-
 export { destinationData, tripData, travelerData }

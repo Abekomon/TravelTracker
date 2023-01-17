@@ -127,5 +127,4 @@ describe('Trip Class Testing', () => {
       }
     ]);
   });
-
 });

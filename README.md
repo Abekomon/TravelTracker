@@ -1,98 +1,58 @@
-# Webpack Starter Kit
+# Travel Tracker
 
-## Clone This Repo
-
-
-1. Clone down this repo. Since you don't want to name your project "webpack-starter-kit", you can use an optional argument when you run `git clone` (you replace the `[...]` with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Remove the default remote: `git remote rm origin` (notice that `git remote -v` not gives you back nothing)
-1. Create a new repo on GitHub with the name of `[what you want to name the repo]` to be consistent with naming
-1. Copy the address that you would use to clone down this repo - something like `git@github.com:...`
-1. Add this remote to your cloned down repo: `git remote add origin [address you copied in the previous step]` - do not include the brackets
-
-Now try to commit something (just add a line in the README) and push it up to your new repo. If everything is setup correctly, you should see the changes on GitHub.
+## Abstract:
+This app is a simulation of a travel agency site. It pulls data from a local api related to whichever user logs in, and displays it on a dashboard. There is also a form available that allows users to submit trip request forms for travel agents to approve. 
 
 ## Setup
 
-After one person has gone through the steps of cloning down this repo and editing the remote, everyone should clone down the repo.
+1. Follow the instructions in [this repository](https://github.com/turingschool-examples/travel-tracker-api) to get your local API up and running
 
-Then install the library dependencies. Run:
-
+1. Clone this repository to your local machine
+1. `cd` into the project
+1. In your terminal, run 
 ```bash
 npm install
 ```
-
-To verify that it is setup correctly, run `npm start` in your terminal. Go to `http://localhost:8080/` and you should see a page with the Turing logo image and a beautiful gradient background. If that's the case, you're good to go. Enter `control + c` in your terminal to stop the server at any time.
-
-## Where to Add Your Code
-
-### JavaScript
-
-You have to be very intentional with where you add your feature code. This repo uses a tool called [webpack](https://webpack.js.org/) to combine many JavaScript files into one big file. Webpack enables you to have many, separate JavaScript files to keep your code organized and readable. Webpack expects all of your code files to be in a specific place, or else it doesn't know how to combine them all behind the scenes.
-
-**Create all of your feature code files in the `src` directory.**
-
-Since code is separated into multiple files, you need to use the `import` and `export` syntax to share code across file.
-
-Here is a video that walks through some information about [import and export](https://www.youtube.com/watch?v=_3oSWwapPKQ). There are a lot of resources out there about `import` and `export`, and resources will sometimes call them `ES6 modules`. It's something you will see in React and beyond.
-
-### HTML
-
-Add the HTML you need in the `index.html` file in the `./dist` directory. There is some boilerplate HTML that exists from the start that you can modify.
-
-### Images
-
-Add your image files in the `src/images` directory. Similar to CSS files, you need to `import` image files in the JavaScript entry file (`scripts.js`). Then go into the HTML and add an `img` element with the `src` attribute pointing to the `images` directory. There is an example in the `index.html` file for you to see.
-
-## How to View Your Code in Action
-
-In the terminal, run:
-
+5. In your terminal, run 
 ```bash
 npm start
 ```
 
-You will see a bunch of lines output to your terminal. One of those lines will be something like:
+To verify that it is setup correctly you will see a bunch of lines output to your terminal. One of those lines will be something like:
 
 ```bash
 Project is running at http://localhost:8080/
 ```
 
-Go to `http://localhost:8080/` in your browser to view your code running in the browser.
+6. Go to `http://localhost:8080/` in your browser
 
----
+The default login information is:
+- Username: `traveler01` - `traveler50`
+- Password: `travel` (for all users)
 
-## Test Files Organization
+Notes:
+- Because the data used in the API is a bit dated, the current date is set to `2020/07/17`. You can adjust this directly in scrips.js if you would like to change it.
+- If you would like to reset the API data, you can run `rs` in your terminal.
 
-Similar to feature code, your test code needs to be put in a specific place for it to run successfully.
+## Preview
 
-**Put all of your test files in the `test` directory.** As a convention, all test filenames should end with `-test.js`. For instance: `box-test.js`.
+![Application login screen](https://cdn.loom.com/images/originals/5a39f2e21b884486b72341ade4b9e74f.jpg?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9jZG4ubG9vbS5jb20vaW1hZ2VzL29yaWdpbmFscy81YTM5ZjJlMjFiODg0NDg2YjcyMzQxYWRlNGI5ZTc0Zi5qcGciLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE2NzQwNjQxOTl9fX1dfQ__&Key-Pair-Id=APKAJQIC5BGSW7XXK7FQ&Signature=EdhMOpp67NxE507vflm1LpzoTU9zBND0JYbAhIA1lcQn7E6LGsB7UZU8JEsPQlvqh5lT7TziAYo3HVaw0eudvKFSwgTUdEKmxeWOSDYkymUX-UGwMB21hKyJLs42AzIHqcPXKMBAKROAjHe028DHd5CX0q93cpVU9SGtNVs-7Gh6%7ELOtBWnjkkZGYqbR1j8RXIi1xLxgQ%7ERQRXp2PHZQDVxier4bdLqLz-cyg4f5cpEXKkGlxNvqLlfMsQOUe-p7lRerp39aWVHuheAhR23K-0hey2ph-mOOPoNE2AXJNRbZEsh3RdsrUF5cHfgBhB7XwmresKH-ktJMvsBnhHIZtw__)
 
-## Running Your Tests
+![Application dashboard page for random user](https://cdn.loom.com/images/originals/6a8c17aa19d64769a1444c0bd6521d74.jpg?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9jZG4ubG9vbS5jb20vaW1hZ2VzL29yaWdpbmFscy82YThjMTdhYTE5ZDY0NzY5YTE0NDRjMGJkNjUyMWQ3NC5qcGciLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE2NzQwNjQzMDB9fX1dfQ__&Key-Pair-Id=APKAJQIC5BGSW7XXK7FQ&Signature=Zop2PC0hLzzjMz5ABmIKYzOp2GD-3swrnP5ha6TNomqAhZTnsf1kbz7Bpn7tn%7EJ-bVstGDUK0giLJqJy2rgo3CFSuQlWRmxpgNCe2075jeyDyt2cFdqCsmdYQ77KcjGArHiJ-xrP6rBuYNxhMYdZprh9gP5jWGh2nHSoFaWEduObH08yZcY3AJQVToX15uINzpFrKN7yRtx1u6aI%7E4bswg4OyP9EcGtYTgOIo9oiTCpsWrZ4SYi2VghVOd-3koh%7Et1QDd0vW3RVNg10mBlWk22DXc%7EVPjYOUedJkthkLS5ZqsZLOnbQP72ou9Ji15HwFstedT0YO%7Ez3aUaP2fR3wcQ__)
 
-Run your test suite using the command:
+![Trip Request Form](https://cdn.loom.com/images/originals/259a929491c14677aa14b6d71e377352.jpg?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9jZG4ubG9vbS5jb20vaW1hZ2VzL29yaWdpbmFscy8yNTlhOTI5NDkxYzE0Njc3YWExNGI2ZDcxZTM3NzM1Mi5qcGciLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE2NzQwNjQzODJ9fX1dfQ__&Key-Pair-Id=APKAJQIC5BGSW7XXK7FQ&Signature=lttn3NNB1MuQHBBSIGQHAfpyTpdT1mgCvhcQNgYeVJsX4nCW33Zg5%7ELmqdsBM7WTwi9RPCgTlDV1iukcKHXXB3ZauImbW0DeorFeDtSxvU5CiyvoE6EIAuwe1FZJxYcTrgbEYIYYpBwD9zuLSpcwyHLsQB7mou1z6cRLu7jvXOgUO4xasrgOGUdJBMSRwsvKW2c2hXXZTu0CjUtqSZvSY6Ngatd5qIJzuAqwWJ3fcQCIWG5FhzzGFk6OG6Z-u9b%7Et-J%7ELwqvpm2MqYSuMY8GLL-7OeGTLO2DnOhPM0q8k4UmRk%7E9VR4HupbUrmQ70sI4iJdav6h2FdnE5yS7Xkh31A__)
 
-```bash
-npm test
-```
+## Contributors
+- Max Lange - [LinkedIn](https://www.linkedin.com/in/maxwell-steven-lange) - [GitHub](https://github.com/Abekomon)
 
-The test results will output to the terminal.
+## Context
+This was my final project for Mod 2 at Turing School of Software and Design. I had a week to finish the project, and spent roughly 20-25 hours.
 
----
-
-## Linting Your Code
-
-Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit - the linter is still running successfully.
-
-Your linter will look at the JavaScript files you have within the `src` directory and the `test` directory.
-
-## Webpack?
-
-If you look in the `package.json` file, you'll see one of the library dependencies called `webpack`. If you're interested in learning more about what Webpack is and how it works behind the scenes, take a look through the [Webpack configuration documentation](https://webpack.js.org/concepts/).
-
-## Deploying to GitHub Pages
-
-_If you are finished with the functionality and testing of your project_, then you can consider deploying your project to the web! This way anyone can play it without cloning down your repo.
-
-[GitHub Pages](https://pages.github.com/) is a great way to deploy your project to the web. Don't worry about this until your project is free of bugs and well tested!
-
-If you _are_ done, you can follow [this procedure](./gh-pages-procedure.md) to get your project live on GitHub Pages.
+## Technology Used
+- Javascript
+- HTML/CSS
+- Mocha/Chai
+- Node Package Manager (npm)
+- Webpack
+- Git/Github
+- Lighthouse

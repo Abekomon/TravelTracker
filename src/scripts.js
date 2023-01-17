@@ -81,7 +81,8 @@ function displayTripType(data, type, location) {
     const dest = new Destination(trip, allDestinations);
     location.innerHTML += 
     `<div class="trip-card">
-      <header>${dest.name}</header>
+      <img src="${dest.image}" alt="${dest.alt}"/>
+      <h4>${dest.name}</h4>
       <p>Date: ${trip.date}</p>
       <p>Travelers: ${trip.travelers}</p>
       <p>Duration: ${trip.duration} days</p>
@@ -123,7 +124,7 @@ function postFormData() {
     if(response.ok){
       return response.json;
     } else {
-      throw new Error('Something went wrong!')
+      throw new Error()
     }
   }).then(() => {
     resetFormData();
@@ -174,7 +175,13 @@ function updateAria(bool){
 function loginCheck() {
   const user = Number(loginUsername.value.slice(-2));
   fetch(`http://localhost:3001/api/v1/travelers/${user}`)
-  .then(response => response.json())
+  .then(response => {
+    if(response.ok){
+      return response.json();
+    } else {
+      throw Error(response.status);
+    }
+  })
   .then(data => {
     const user = new Traveler(data, currentDate);
     if(user.password === loginPassword.value){
@@ -188,9 +195,14 @@ function loginCheck() {
       loginMessage.innerText = 'Incorrect Username or Password, please try again!';
     }
   })
-  .catch(() => {
-    loginMessage.classList.remove('hidden')
-    loginMessage.innerText = 'Something went wrong with the server, please try again later!';
+  .catch((error) => {
+    if(error.message !== '404') {
+      loginMessage.classList.remove('hidden')
+      loginMessage.innerText = 'Something went wrong with the server, please try again later!';
+    } else {
+      loginMessage.classList.remove('hidden');
+      loginMessage.innerText = 'This user does not exist!';
+    }
   })
 }
 
