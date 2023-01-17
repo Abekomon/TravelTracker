@@ -123,7 +123,7 @@ function postFormData() {
     if(response.ok){
       return response.json;
     } else {
-      throw new Error('Something went wrong!')
+      throw new Error()
     }
   }).then(() => {
     resetFormData();
@@ -178,7 +178,7 @@ function loginCheck() {
     if(response.ok){
       return response.json();
     } else {
-      throw new Error();
+      throw Error(response.status);
     }
   })
   .then(data => {
@@ -194,9 +194,14 @@ function loginCheck() {
       loginMessage.innerText = 'Incorrect Username or Password, please try again!';
     }
   })
-  .catch(() => {
-    loginMessage.classList.remove('hidden')
-    loginMessage.innerText = 'Something went wrong with the server, please try again later!';
+  .catch((error) => {
+    if(error.message !== '404') {
+      loginMessage.classList.remove('hidden')
+      loginMessage.innerText = 'Something went wrong with the server, please try again later!';
+    } else {
+      loginMessage.classList.remove('hidden');
+      loginMessage.innerText = 'This user does not exist!';
+    }
   })
 }
 
