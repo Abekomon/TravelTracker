@@ -1,6 +1,7 @@
 class Destination {
   constructor(tripData, destData) {
     this.tripData = tripData;
+    this.allDests = destData;
     this.currentDest = destData.find(dest => dest.id === tripData.destinationID);
     this.name = this.currentDest.destination;
     this.lodgingCostPerDay = this.currentDest.estimatedLodgingCostPerDay;

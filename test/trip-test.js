@@ -38,7 +38,7 @@ describe('Trip Class Testing', () => {
       {
         id: 1,
         userID: 1,
-        destinationID: 49,
+        destinationID: 2,
         travelers: 1,
         date: "2020/05/16",
         duration: 8,
@@ -88,7 +88,7 @@ describe('Trip Class Testing', () => {
       {
         id: 1,
         userID: 1,
-        destinationID: 49,
+        destinationID: 2,
         travelers: 1,
         date: "2020/05/16",
         duration: 8,
@@ -118,7 +118,7 @@ describe('Trip Class Testing', () => {
       {
         id: 1,
         userID: 1,
-        destinationID: 49,
+        destinationID: 2,
         travelers: 1,
         date: "2020/05/16",
         duration: 8,
