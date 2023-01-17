@@ -84,6 +84,7 @@ main {
   padding: 5px 20px;
   flex-direction: column;
   justify-content: center;
+  overflow: auto;
   cursor: pointer;
   border-radius: 10px 10px 0 0;
 }
@@ -110,7 +111,7 @@ main {
   margin: auto;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 0 10px;
+  padding: 0 10px 5px;
   gap: 0 8px;
 }
 
@@ -122,13 +123,28 @@ main {
 }
 
 .trip-card {
-  height: 200px;
-  min-width: 150px;
+  height: 300px;
+  min-width: 250px;
+  max-width: 400px;
   margin: 10px 0 5px;
-  overflow: auto;
   background-color: white;
-  border: 1px solid black;
+  border: 1px solid #c7ddb5;
   flex-grow: 1;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #c7ddb5;
+}
+
+.trip-card img {
+  width: 100%;
+  height: 150px;
+}
+
+.trip-card h4 {
+  margin: 0;
+}
+
+.trip-card p {
+  margin: 0;
 }
 
 .form-container {
@@ -194,4 +210,19 @@ input:focus, select:focus {
 
 .hidden {
   display: none;
+}
+
+@media screen and (max-width: 850px) {
+  .trips-container {
+    flex-direction: column;
+  }
+
+  .welcome-message {
+    font-size: 25px;
+  }
+
+  .login-section {
+    width: 90%;
+    min-width: 300px;
+  }
 }

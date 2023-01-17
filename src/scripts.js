@@ -81,7 +81,8 @@ function displayTripType(data, type, location) {
     const dest = new Destination(trip, allDestinations);
     location.innerHTML += 
     `<div class="trip-card">
-      <header>${dest.name}</header>
+      <img src="${dest.image}" alt="${dest.alt}"/>
+      <h4>${dest.name}</h4>
       <p>Date: ${trip.date}</p>
       <p>Travelers: ${trip.travelers}</p>
       <p>Duration: ${trip.duration} days</p>
