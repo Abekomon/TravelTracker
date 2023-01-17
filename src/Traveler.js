@@ -1,6 +1,7 @@
 class Traveler {
   constructor(data, date) {
     this.currentDate = date;
+    this.current = data;
     this.id = data.id;
     this.name = data.name;
     this.travelerType = data.travelerType;
