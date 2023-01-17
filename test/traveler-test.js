@@ -50,5 +50,4 @@ describe('Traveler Class Testing', () => {
   it('Should have a method that returns a first name', () => {
     expect(curTraveler.getFirstName()).to.equal('Ham');
   })
-
 });
